@@ -60,7 +60,7 @@ metadata:
   name: test
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/target-type: instance
 spec:
   ingressClassName: alb
   rules:
