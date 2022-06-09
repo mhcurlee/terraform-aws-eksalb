@@ -293,7 +293,7 @@ resource "kubernetes_service_account" "aws-load-balancer-controller" {
     name = "aws-load-balancer-controller"
     namespace  = "kube-system"
     annotations = {
-      eks.amazonaws.com/role-arn =  "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/AmazonEKSLoadBalancerControllerRole"  
+      "eks.amazonaws.com/role-arn" =  "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/AmazonEKSLoadBalancerControllerRole"  
     }
   }
 }
