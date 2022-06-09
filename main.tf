@@ -288,17 +288,17 @@ resource "aws_security_group_rule" "alb-tcp-9443" {
 
 # add k8s SA
 
-resource "kubernetes_service_account" "example" {
+resource "kubernetes_service_account" "aws-load-balancer-controller" {
   metadata {
     name = "aws-load-balancer-controller"
     namespace  = "kube-system"
-  }
-  annotations {
-    "eks.amazonaws.com/role-arn" =  "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/AmazonEKSLoadBalancerControllerRole"  
+    annotations = {
+      "eks.amazonaws.com/role-arn" =  "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/AmazonEKSLoadBalancerControllerRole"  
+    }
   }
 }
 
-esource "helm_release" "aws-load-balancer-controller" {
+resource "helm_release" "aws-load-balancer-controller" {
   name       = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
