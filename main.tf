@@ -294,7 +294,7 @@ resource "kubernetes_service_account" "example" {
     namespace  = "kube-system"
   }
   annotations {
-    "eks.amazonaws.com/role-arn" =  "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/AmazonEKSLoadBalancerControllerRole"  
+    eks.amazonaws.com/role-arn =  "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/AmazonEKSLoadBalancerControllerRole"  
   }
 }
 
